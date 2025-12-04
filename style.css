@@ -1,0 +1,62 @@
+.container {
+  border: 2px solid rgb(75 70 74);
+  border-radius: 0.5em;
+  padding: 20px 10px;
+  font: 1.2em sans-serif;
+
+  display: flex;
+}
+
+.container>* {
+  padding: 10px;
+  border: 2px solid rgb(95 97 110);
+  border-radius: 0.5em;
+
+  margin: 0 10px;
+  flex: 1;
+}
+
+.image {
+  background-image: url(Assets/images/fast-food-burgers-with-fries-cola-black-chalkboard_220925-8245.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #ffffff;
+  background-blend-mode: multiply;
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+}
+
+.fixed-button {
+  position: absolute;  
+  bottom: 10px;  
+  right: 10px;
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.fixed-button:hover {
+  background-color: #0056b3;
+}
+
+
+.fixed-button:active {
+  background-color: #94c9ff;
+}
+
+.card {
+    width: 250px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
