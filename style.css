@@ -4,18 +4,24 @@
   padding: 20px 10px;
   font: 1.2em sans-serif;
   display: flex;
-  justify-content: flex-start;/* now works */
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 12px;
+
+  /* Give space for bill section */
+  margin-right: 380px;
 }
 
-.food-container>* {
+.food-container > * {
   padding: 10px;
   border: 2px solid rgb(95 97 110);
   border-radius: 0.5em;
-
   margin-left: 0;
 }
 
+/* --------------------------
+   BACKGROUND IMAGE
+--------------------------- */
 .image {
   background-image: url(Assets/images/fast-food-burgers-with-fries-cola-black-chalkboard_220925-8245.jpg);
   background-size: cover;
@@ -33,57 +39,51 @@
   bottom: 10px;
   right: 10px;
   padding: 10px 15px;
-  background-color: #007BFF;
+  background-color: #c72e2e;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 1.2rem;
   cursor: pointer;
-  font-size: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.fixed-button:hover {
-  background-color: #0056b3;
-}
-
-
-.fixed-button:active {
-  background-color: #94c9ff;
-}
-
-.card {
-  width: 250px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
+/* --------------------------
+   BILL SECTION (RIGHT FIXED)
+--------------------------- */
 .bill-section {
-  width: 350px;
-  position: sticky;
-  top: 20px;
-  height: fit-content;
-  max-height: calc(100vh - 40px);
-  overflow-y: auto;
+  position: fixed;
+  top: 200px;
+  bottom: 300px;
+  right: 80px;
+  width: 450px;
+  z-index: 2000;
+  height: 550px;
 }
 
 .bill-container {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.25);
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
+/* --------------------------
+   BILL HEADER
+--------------------------- */
 .bill-header {
   background: linear-gradient(to right, #333, #555);
   color: white;
   padding: 20px;
   text-align: center;
+  border-radius: 12px 12px 0 0;
 }
 
 .bill-header h2 {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   margin-bottom: 5px;
 }
 
@@ -92,13 +92,16 @@
   opacity: 0.8;
 }
 
+/* --------------------------
+   BILL CONTENT
+--------------------------- */
 .bill-content {
   padding: 20px;
 }
 
 .bill-items {
   margin-bottom: 20px;
-  max-height: 300px;
+  max-height: 250px;
   overflow-y: auto;
 }
 
@@ -106,7 +109,7 @@
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  border-bottom: 1px dashed #eee;
+  border-bottom: 1px dashed #e2e2e2;
 }
 
 .bill-item:last-child {
@@ -114,18 +117,21 @@
 }
 
 .bill-item-name {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .bill-item-qty {
-  color: #666;
+  color: #555;
   font-size: 0.9rem;
 }
 
 .bill-item-price {
-  font-weight: 600;
+  font-weight: 700;
 }
 
+/* --------------------------
+   BILL TOTALS
+--------------------------- */
 .bill-totals {
   border-top: 2px solid #eee;
   padding-top: 15px;
@@ -148,24 +154,30 @@
   margin-top: 10px;
 }
 
+/* --------------------------
+   EMPTY BILL MESSAGE
+--------------------------- */
 .empty-bill {
   text-align: center;
   color: #999;
-  padding: 30px 0;
+  padding: 25px 0;
   font-style: italic;
 }
 
+/* --------------------------
+   BILL BUTTONS
+--------------------------- */
 .bill-actions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   margin-top: 25px;
 }
 
 .bill-btn {
   padding: 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
   font-size: 1rem;
@@ -180,22 +192,12 @@
   background-color: #c72e2e;
   color: white;
 }
-
-.checkout-btn:hover {
-  background-color: #b02525;
-}
-.checkout-btn:active {
-  background-color: #601717;
-}
+.checkout-btn:hover { background-color: #b02525; }
+.checkout-btn:active { background-color: #601717; }
 
 .clear-btn {
-  background-color: #f0f0f0;
+  background-color: #e6e6e6;
   color: #333;
 }
-
-.clear-btn:hover {
-  background-color: #aeacac;
-}
-.clear-btn:active {
-  background-color: #5e5b5b;
-}
+.clear-btn:hover { background-color: #bdbdbd; }
+.clear-btn:active { background-color: #7d7d7d; }

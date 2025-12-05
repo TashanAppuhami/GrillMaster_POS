@@ -7,105 +7,104 @@
     <title>Grill Master</title>
 
     <link rel="stylesheet" href="style.css">
-
     <link rel="stylesheet" href="bootstrap.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
-
 </head>
 
-<body class="image">
-    <header class="bg-light p-3 mb-4 d-flex ">
-        <h5 class="">Grill Master</h5>
-        <ul class="nav justify-content-end ">
-            <li class="nav-item">
-                <a class="nav-link active" href="index.html"><i class="ri-home-4-fill"></i></i></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="cart.html"><i class="ri-shopping-cart-2-fill"></i></i></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-        </ul>
-    </header>
+<body>
 
-    <div class="">
-        <h1 class="text-center mt-5">Welcome to Grill Master</h1>
-        <p class="text-center">Your ultimate destination for delicious grilled delights!</p>
-    </div>
+    <!-- Background wrapper ONLY -->
+    <div class="image">
 
-    <div>
-        <div class="card-header mt-5">
-            <h2 class="m-lg-3 link-light">Burgers & Wraps</h2>
-            <div id="burger" class="food-container mt-5 col-sm-8 m-lg-3"></div>
+        <header class="bg-light p-3 mb-4 d-flex ">
+            <h5 class="">Grill Master</h5>
+            <ul class="nav justify-content-end ">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html"><i class="ri-home-4-fill"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.html"><i class="ri-shopping-cart-2-fill"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+        </header>
+
+        <div class="">
+            <h1 class="text-center mt-5">Welcome to Grill Master</h1>
+            <p class="text-center">Your ultimate destination for delicious grilled delights!</p>
         </div>
 
         <div>
-            <div id="wraps" class="food-container mt-5 col-sm-8 m-lg-3">
+            <div class="card-header mt-5">
+                <h2 class="m-lg-3 link-light">Burgers & Wraps</h2>
+                <div id="burger" class="food-container mt-5 col-sm-8 m-lg-3"></div>
+            </div>
+
+            <div>
+                <div id="wraps" class="food-container mt-5 col-sm-8 m-lg-3"></div>
+            </div>
+
+            <div>
+                <div id="sides" class="food-container mt-5 col-sm-8 m-lg-3"></div>
+            </div>
+
+            <div>
+                <div id="beverages" class="food-container mt-3 col-sm-8 m-lg-3"></div>
             </div>
         </div>
 
-        <div>
-            <div id="sides" class="food-container mt-5 col-sm-8 m-lg-3"></div>
-        </div>
-
-        <div>
-            <div id="beverages" class="food-container mt-3 col-sm-8 m-lg-3"></div>
-        </div>
-
-        <aside class="bill-section">
-            <div class="bill-container">
-                <div class="bill-header">
-                    <h2><i class="fas fa-receipt"></i> Your Bill</h2>
-                    <p>Grill Master Restaurant</p>
-                </div>
-                
-                <div class="bill-content">
-                    <div class="bill-items" id="billItems">
-                        <!-- Bill items will be dynamically added here -->
-                        <div class="empty-bill">No items added yet. Select items from the menu to add them to your bill.</div>
-                    </div>
-                    
-                    <div class="bill-totals">
-                        <div class="total-row">
-                            <span>Subtotal:</span>
-                            <span id="subtotal">$0.00</span>
-                        </div>
-                        <div class="total-row">
-                            <span>Tax (8%):</span>
-                            <span id="tax">$0.00</span>
-                        </div>
-                        <div class="total-row grand-total">
-                            <span>Total:</span>
-                            <span id="total">$0.00</span>
-                        </div>
-                    </div>
-                    
-                    <div class="bill-actions">
-                        <button class="bill-btn checkout-btn" id="checkoutBtn">
-                            <i class="fas fa-credit-card"></i> Checkout
-                        </button>
-                        <button class="bill-btn clear-btn" id="clearBtn">
-                            <i class="fas fa-trash-alt"></i> Clear Bill
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-    </div>
-
-    <div>
         <footer class="text-center mt-5 py-4 bg-light">
             <p>&copy; 2024 Grill Master. All rights reserved.</p>
         </footer>
-    </div>
+
+    </div> <!-- end .image wrapper -->
+
+    <!-- FIXED BILL SECTION (Moved OUTSIDE image container) -->
+    <aside class="bill-section">
+        <div class="bill-container">
+            <div class="bill-header">
+                <h2><i class="fas fa-receipt"></i> Your Bill</h2>
+                <p>Grill Master Restaurant</p>
+            </div>
+            
+            <div class="bill-content">
+                <div class="bill-items" id="billItems">
+                    <div class="empty-bill">No items added yet. Select items from the menu to add them to your bill.</div>
+                </div>
+                
+                <div class="bill-totals">
+                    <div class="total-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Tax (8%):</span>
+                        <span id="tax">$0.00</span>
+                    </div>
+                    <div class="total-row grand-total">
+                        <span>Total:</span>
+                        <span id="total">$0.00</span>
+                    </div>
+                </div>
+                
+                <div class="bill-actions">
+                    <button class="bill-btn checkout-btn" id="checkoutBtn">
+                        <i class="fas fa-credit-card"></i> Checkout
+                    </button>
+                    <button class="bill-btn clear-btn" id="clearBtn">
+                        <i class="fas fa-trash-alt"></i> Clear Bill
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
 
     <script src="app.js"></script>
 </body>

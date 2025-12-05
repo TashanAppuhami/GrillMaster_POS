@@ -53,9 +53,8 @@ function addToCart(name , price){
     const container = document.querySelector('.bill-items');
     container.innerHTML += `
     <div class="bill-item d-flex justify-content-between align-items-center mb-3">
-        <span class="item-name">${name}</span>
-        
-        <span class="item-price">$${price.toFixed(2)}</span>
+        <span>${name}</span>
+        <span>$${price.toFixed(2)}</span>
     </div>
     `;
     updateTotal(price);
