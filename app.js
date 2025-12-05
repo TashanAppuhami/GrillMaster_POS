@@ -14,8 +14,12 @@ const menu = [
     { name: "French Fries", price: 2.99, image: "Assets/images/fries.jpg", description: "Crispy golden french fries, perfect as a side." },
     { name: "Onion Rings", price: 3.49, image: "Assets/images/onionRings.jpg", description: "Crunchy onion rings battered to perfection." },
     { name: "Coleslaw", price: 2.49, image: "Assets/images/coleslaw.jpg", description: "Fresh and tangy coleslaw made with shredded cabbage and carrots." },
-    { name: "Soft Drink", price: 1.99, image: "Assets/images/softDrink.jpg", description: "Refreshing soft drink to quench your thirst." },
-    { name: "Milkshake", price: 3.99, image: "Assets/images/milkshake.jpg", description: "Creamy milkshake available in various flavors." }
+    
+    { name: "Iced Milo", price: 2.99, image: "Assets/images/milo.jpg", description: "Refreshing iced Milo drink, perfect for any time of the day." },
+    { name: "Coke", price: 1.99, image: "Assets/images/coke.jpg", description: "Chilled Coca-Cola to quench your thirst." },
+    { name: "Sprite", price: 1.99, image: "Assets/images/sprite.jpg", description: "Cool and crisp Sprite, a lemon-lime soda." },
+    { name: "Coke Zero", price: 1.99, image: "Assets/images/cokezero.jpg", description: "Coke Zero with zero sugar and full flavor."},
+    { name: "Fanta", price: 1.99, image: "Assets/images/fanta.jpg", description: "Fanta, a fruity and refreshing orange soda."}
 ]
 
 
@@ -42,5 +46,23 @@ window.onload = function () {
     renderFood('burger', menu.slice(0, 5));
     renderFood('wraps', menu.slice(5,10));
     renderFood('sides', menu.slice(10,13));
-    renderFood('beverages', menu.slice(13,15));
+    renderFood('beverages', menu.slice(13));
+}
+
+function addToCart(name , price){
+    const container = document.querySelector('.bill-items');
+    container.innerHTML += `
+    <div class="bill-item d-flex justify-content-between align-items-center mb-3">
+        <span class="item-name">${name}</span>
+        
+        <span class="item-price">$${price.toFixed(2)}</span>
+    </div>
+    `;
+    updateTotal(price);
+}
+
+function updateTotal(price) {
+    const totalElement = document.getElementById('total');
+    const total = parseFloat(totalElement.innerHTML) || 0;
+    totalElement.innerHTML =`$${(total + price).toFixed(2)}`;
 }
