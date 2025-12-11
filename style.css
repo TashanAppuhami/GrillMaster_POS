@@ -4,15 +4,16 @@
   padding: 20px 10px;
   font: 1.2em sans-serif;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-start;
-  gap: 12px;
+
+  overflow-x: auto;
 
   /* Give space for bill section */
   margin-right: 380px;
 }
 
-.food-container > * {
+.food-container>* {
   padding: 10px;
   border: 2px solid rgb(95 97 110);
   border-radius: 0.5em;
@@ -34,19 +35,44 @@
   border-radius: 15px;
 }
 
-.fixed-button {
+.fixed-button{
   position: absolute;
   bottom: 10px;
-  right: 10px;
-  padding: 10px 15px;
   background-color: #c72e2e;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  border-radius: 20%;
+}
+
+.btn-plus{
+  padding: 6px 10px;
+  right: 10px;
+}
+
+.btn-min{
+  padding: 6px 12px;
+  left: 10px;
+}
+
+.fixed-button:hover {
+  background-color: #b02525;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fixed-button:active {
+  background-color: #601717;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.price-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
 /* --------------------------
@@ -55,18 +81,17 @@
 .bill-section {
   position: fixed;
   top: 200px;
-  bottom: 300px;
-  right: 80px;
+  margin-bottom: 200px;
+  right: 40px;
   width: 450px;
-  z-index: 2000;
+  z-index: 3000;
   height: 550px;
 }
 
 .bill-container {
   background: #ffffff;
   border-radius: 12px;
-  padding: 0;
-  box-shadow: 0px 0px 15px rgba(0,0,0,0.25);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
   max-height: 85vh;
   overflow-y: auto;
 }
@@ -192,12 +217,62 @@
   background-color: #c72e2e;
   color: white;
 }
-.checkout-btn:hover { background-color: #b02525; }
-.checkout-btn:active { background-color: #601717; }
+
+.checkout-btn:hover {
+  background-color: #b02525;
+}
+
+.checkout-btn:active {
+  background-color: #601717;
+}
 
 .clear-btn {
   background-color: #e6e6e6;
   color: #333;
 }
-.clear-btn:hover { background-color: #bdbdbd; }
-.clear-btn:active { background-color: #7d7d7d; }
+
+.clear-btn:hover {
+  background-color: #bdbdbd;
+}
+
+.clear-btn:active {
+  background-color: #7d7d7d;
+}
+
+
+.qty-btn {
+  background-color: #f0f0f0;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.qty-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.qty-btn:active {
+  background-color: #d0d0d0;
+}
+
+.quantity {
+  font-size: 1.2rem;
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+}
+
+.btn-minus{
+  position: absolute;
+  margin-bottom: 10px;
+  width: 30px;
+  height: 30px;
+  bottom: 10px;
+}
