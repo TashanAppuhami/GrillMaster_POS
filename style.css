@@ -301,3 +301,48 @@
   background-color: #ffc8c8;
   color: white;
 }
+
+
+.checkoutOverlay {
+  display: none;
+  position: fixed;
+  width: 500px;
+  height: 550px;
+  left: 35%;
+  top: 20%;
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 0.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pop-window-btns{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.confirm-btn{
+  background-color: #c72e2e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.confirm-btn:hover{
+  background-color: #b02525;
+}
+.confirm-btn:active{
+  background-color: #601717;
+}
+
+.confirm-lbls{
+  
+  border: 2px solid rgb(191, 191, 191);
+  padding: 5px 10px;
+  font-weight: 600;
+  
+  
+}

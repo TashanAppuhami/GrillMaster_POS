@@ -1,7 +1,7 @@
 const menu = [
     { id: 1, name: "Crispy Chicken Burger", price: 5.99, image: "Assets/images/FriedChickenBurgers.jpg", description: "A delicious crispy chicken burger with fresh lettuce and cheese." },
     { id: 2, name: "Spicy Chicken Sandwich", price: 6.49, image: "Assets/images/Spicy CB.jpg", description: "A spicy chicken sandwich with a kick, served with pickles and mayo." },
-    { id: 3, name: "Grilled Chicken Burger", price: 5.49, image: "Assets/images/FriedChickenBurgers.jpg", description: "A juicy grilled chicken burger topped with lettuce, tomato, and mayo." },
+    { id: 3, name: "Grilled Chicken Burger", price: 5.49, image: "Assets/images/grilled.jpg", description: "A juicy grilled chicken burger topped with lettuce, tomato, and mayo." },
     { id: 4, name: "Cajun Chicken Burger", price: 6.99, image: "Assets/images/shrimp.jpg", description: "A flavorful Cajun chicken burger with spicy seasoning and fresh toppings." },
     { id: 5, name: "Vegie Burger", price: 4.99, image: "Assets/images/vegie.jpg", description: "A tasty veggie burger made with a patty blend of fresh vegetables and spices." },
 
@@ -23,8 +23,8 @@ const menu = [
 ]
 
 const pastOrders = []
-
 const newOrder = []
+const customerData = []
 
 
 function displayBurgers(menu) {
@@ -76,8 +76,6 @@ function addToCart(id, name, price) {
         newOrder.push(newItem);
     }
 
-    console.log(newOrder)
-    // document.querySelector('.empty-bill').innerHTML = ``;
     loadItems();
     addPrices(price);
 }
@@ -150,12 +148,12 @@ function checkItem(id) {
 
 function loadItems() {
 
-    console.log("Length : "+newOrder.length)
+    console.log("Length : " + newOrder.length)
 
     let container = document.getElementById('billItems');
     container.innerText = "";
 
-    newOrder.forEach(element => {   
+    newOrder.forEach(element => {
         container.innerHTML += `
             <div class="bill-item ">
                 <span class= "bill-item-name col-6">${element.Name}</span>
@@ -167,7 +165,73 @@ function loadItems() {
     });
 }
 
-function popItem(index){
-    newOrder.splice(index,1)
+function popItem(index) {
+    newOrder.splice(index, 1)
     loadItems();
 }
+
+function checkOutModal() {
+    const modal = document.getElementById("checkoutModal");
+    modal.style.display = "block";
+
+}
+
+function confirmOrder() {
+
+    let modal = document.getElementById("checkoutModal");
+    let customerName = document.getElementById("customerName").value;
+    let customerContact = document.getElementById("customerTelephone").value;
+
+    if (newOrder.length === 0) {
+        alert("No items in the order to confirm.");
+        return;
+    }
+
+    if (customerName === "" || customerContact === "") {
+        alert("Please fill both Input fields.");
+        return;
+    }
+
+    const orderDetails = {
+        order_id: `B${(pastOrders.length + 1).toString().padStart(4, '0')}`,
+        items: [...newOrder],
+        subtotal: parseFloat(document.getElementById('subtotal').innerHTML),
+        tax: parseFloat(document.getElementById('tax').innerHTML),
+        total: parseFloat(document.getElementById('total').innerHTML),
+        timestamp: new Date().toISOString()
+    };
+
+    Swal.fire({
+        icon: "success",
+        title: "Order Confirmed!!",
+        text: "Your order has been successfully placed!",
+    });
+
+    pastOrders.push(orderDetails);
+
+    customerData.push({
+        name: customerName,
+        contact: customerContact,
+        order_id: orderDetails.order_id
+    });
+
+    newOrder.length = 0;
+    customerContact.value = "";
+    customerName.value = "";
+
+    modal.style.display = "none";
+}
+
+function clearBill() {
+    if (newOrder.length === 0) {
+        alert("No items in the bill to clear.");
+        return;
+    }
+    newOrder.length = 0;
+    loadItems();
+    document.querySelector(`.bill-items`).innerHTML = `<div class="empty-bill">No items added yet. Select items from the menu to add them to your bill.
+    </div>`;
+    document.getElementById('subtotal').innerHTML = "0.00";
+    document.getElementById('tax').innerHTML = "0.00";
+    document.getElementById('total').innerHTML = "0.00";
+}   
