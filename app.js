@@ -36,7 +36,7 @@ function displayBurgers(menu) {
             <p class="text-center"> <br>${menu.description}</p>
             <p class="price-tag">$${menu.price}</p>
             <div class="mb-3">
-                <input type="button" class="fixed-button btn-min" id="" value="-" onclick="removeFromCart(${menu.Id})">
+                <input type="button" class="fixed-button btn-min" id="btnMinus" value="-" onclick="removeFromCart(${menu.id},${menu.price})">
                 <input type="button" class="fixed-button btn-plus" id="" value="+" onclick="addToCart(${menu.id},'${menu.name}',${menu.price})">
             </div>
             
@@ -57,14 +57,11 @@ window.onload = function () {
     renderFood('beverages', menu.slice(13));
 }
 
-function addToCart(id,name,price) {
+function addToCart(id, name, price) {
 
-    console.log("Id : "+id)
-    console.log("Name : "+name)
-    console.log("Price : "+price)
 
     let orderId = checkItem(id);
-    
+
     if (orderId !== -1) {
         newOrder[orderId].Qty += 1;
         newOrder[orderId].Price = newOrder[orderId].Qty * price;
@@ -79,45 +76,69 @@ function addToCart(id,name,price) {
         newOrder.push(newItem);
     }
 
+    console.log(newOrder)
     // document.querySelector('.empty-bill').innerHTML = ``;
-    let container = document.getElementById('billItems');
-
-    container.innerText = "";
-
-    newOrder.forEach(element => {
-        container.innerHTML += `
-        <div class="bill-item details">
-            <span class= "bill-item-name">${element.Name}</span>
-            <span class= "bill-item-price">$${(element.Price).toFixed(2)}</span>
-        </div>
-        <div class ="bill-item-qty">
-            Qty ${element.Qty}
-        </div>
-        
-    `;
-
-    });
-
-    updateTotal(price);
+    loadItems();
+    addPrices(price);
 }
 
-function removeFromCart(id){
+function removeFromCart(id, price) {
 
+    let index = checkItem(id);
+
+    if (index === -1) {
+        alert("This item hasn't been added to the bill yet.");
+    } else {
+        if (newOrder[index].Qty === 1) {
+            popItem(index)
+            subtractPrices(price)
+        } else {
+            newOrder[index].Qty -= 1;
+            newOrder[index].Price = newOrder[index].Qty * price;
+            loadItems();
+            subtractPrices(price)
+        }
+    }
+    console.log(newOrder)
 }
 
-function updateTotal(price) {
+function addPrices(price) {
     const totalElement = document.getElementById('total');
-    const total = parseFloat(totalElement.innerHTML) || 0;
-    totalElement.innerHTML = `${(total + price).toFixed(2)}`;
+    const subTotal = document.getElementById('subtotal');
+    const tax = document.getElementById('tax');
+
+    const stotal = parseFloat(subTotal.innerHTML) || 0;
+
+    subTotal.innerHTML = `${(stotal + price).toFixed(2)}`;
+    tax.innerHTML = `${((stotal + price) * 0.08).toFixed(2)}`
+
+
+    totalElement.innerHTML = (parseFloat(subTotal.innerHTML) + parseFloat(tax.innerHTML)).toFixed(2);
+
+}
+
+function subtractPrices(price) {
+    const totalElement = document.getElementById('total');
+    const subTotal = document.getElementById('subtotal');
+    const tax = document.getElementById('tax');
+
+    const stotal = parseFloat(subTotal.innerHTML) || 0;
+
+    subTotal.innerHTML = `${(stotal - price).toFixed(2)}`;
+    tax.innerHTML = `${((stotal - price) * 0.08).toFixed(2)}`
+
+
+    totalElement.innerHTML = (parseFloat(subTotal.innerHTML) + parseFloat(tax.innerHTML)).toFixed(2);
+
 }
 
 //  check an item before added to the array newOrder
 function checkItem(id) {
 
-    if (newOrder.length==0) {
+    if (newOrder.length == 0) {
         return -1;
 
-    }else{
+    } else {
         for (let i = 0; i < newOrder.length; i++) {
             if (newOrder[i].Id === id) {
                 return i;
@@ -127,11 +148,26 @@ function checkItem(id) {
     }
 }
 
+function loadItems() {
 
+    console.log("Length : "+newOrder.length)
 
+    let container = document.getElementById('billItems');
+    container.innerText = "";
 
+    newOrder.forEach(element => {   
+        container.innerHTML += `
+            <div class="bill-item ">
+                <span class= "bill-item-name col-6">${element.Name}</span>
+                <span class= "bill-item-qty col-2">Qty ${element.Qty}</span>
+                <span class= "bill-item-price col-4">$${(element.Price).toFixed(2)}</span>
+                <button class="btn-remove" onclick="popItem(checkItem(${element.Id}))"><i class="fa-regular fa-circle-xmark"></i></button>
+            </div>                    
+        `;
+    });
+}
 
-
-
-
-
+function popItem(index){
+    newOrder.splice(index,1)
+    loadItems();
+}

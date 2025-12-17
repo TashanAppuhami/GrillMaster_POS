@@ -80,9 +80,9 @@
 --------------------------- */
 .bill-section {
   position: fixed;
-  top: 200px;
+  top: 100px;
   margin-bottom: 200px;
-  right: 40px;
+  right: 2%;
   width: 450px;
   z-index: 3000;
   height: 550px;
@@ -131,6 +131,7 @@
 }
 
 .bill-item {
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
@@ -275,4 +276,28 @@
   width: 30px;
   height: 30px;
   bottom: 10px;
+}
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-remove {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  color: #7d7d7d;
+  border: none;
+  border-radius: 50px;
+  right: 2px;
+}
+.btn-remove:hover{
+  background-color: #f90b0b;
+  color: white;
+}
+
+.btn-remove:active{
+  background-color: #ffc8c8;
+  color: white;
 }
