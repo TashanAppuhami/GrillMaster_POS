@@ -148,8 +148,6 @@ function checkItem(id) {
 
 function loadItems() {
 
-    console.log("Length : " + newOrder.length)
-
     let container = document.getElementById('billItems');
     container.innerText = "";
 
@@ -166,6 +164,7 @@ function loadItems() {
 }
 
 function popItem(index) {
+    subtractPrices(newOrder[index].Price);    
     newOrder.splice(index, 1)
     loadItems();
 }
@@ -215,11 +214,12 @@ function confirmOrder() {
         order_id: orderDetails.order_id
     });
 
-    newOrder.length = 0;
-    customerContact.value = "";
-    customerName.value = "";
+    // set the input fiels empty after confirming the order
+    document.getElementById("customerName").value = "";
+    document.getElementById("customerTelephone").value = "";
 
     modal.style.display = "none";
+    clearBill();
 }
 
 function clearBill() {
@@ -228,7 +228,6 @@ function clearBill() {
         return;
     }
     newOrder.length = 0;
-    loadItems();
     document.querySelector(`.bill-items`).innerHTML = `<div class="empty-bill">No items added yet. Select items from the menu to add them to your bill.
     </div>`;
     document.getElementById('subtotal').innerHTML = "0.00";
