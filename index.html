@@ -14,11 +14,10 @@
 </head>
 
 <body>
-
-    <!-- Background wrapper ONLY -->
+    
     <div class="image">
 
-        <header class="bg-light p-3 mb-4 d-flex pos">
+        <header class="navbar bg-light d-flex justify-content-between align-items-center px-4 py-2">
             <h5 class="">Grill Master</h5>
             <ul class="nav justify-content-end ">
                 <li class="nav-item">
@@ -36,26 +35,29 @@
             </ul>
         </header>
 
-        <div class="">
+        <div class="welcome-section mt-4">
             <h1 class="text-center mt-5">Welcome to Grill Master</h1>
             <p class="text-center">Your ultimate destination for delicious grilled delights!</p>
         </div>
 
         <div>
             <div class="card-header mt-5">
-                <h2 class="m-lg-3 link-light">Burgers & Wraps</h2>
+                <h2 class="m-lg-4 link-light">Burgers</h2>
                 <div id="burger" class="food-container mt-5 col-sm-8 m-lg-3 justify-content-center"></div>
             </div>
 
             <div>
+                <h2 class="m-lg-4 link-light">Wraps</h2>
                 <div id="wraps" class="food-container mt-5 col-sm-8 m-lg-3 justify-content-center"></div>
             </div>
 
             <div>
+                <h2 class="m-lg-4 link-light">Sides</h2>
                 <div id="sides" class="food-container mt-5 col-sm-8 m-lg-3"></div>
             </div>
 
             <div>
+                <h2 class="m-lg-4 link-light">Beverages</h2>
                 <div id="beverages" class="food-container mt-3 col-sm-8 m-lg-3 justify-content-center"></div>
             </div>
         </div>
@@ -64,9 +66,8 @@
             <p>&copy; 2024 Grill Master. All rights reserved.</p>
         </footer>
 
-    </div> <!-- end .image wrapper -->
+    </div>
 
-    <!-- FIXED BILL SECTION (Moved OUTSIDE image container) -->
     <aside class="bill-section">
         <div class="bill-container">
             <div class="bill-header">
@@ -83,15 +84,15 @@
                 <div class="bill-totals">
                     <div class="total-row">
                         <span>Subtotal:</span>
-                        <span id="subtotal">$0.00</span>
+                        <span id="subtotal">LKR 0.00</span>
                     </div>
                     <div class="total-row">
                         <span>Tax (8%):</span>
-                        <span id="tax">$0.00</span>
+                        <span id="tax">LKR 0.00</span>
                     </div>
                     <div class="total-row grand-total">
                         <span>Total:</span>
-                        <span id="total">$0.00</span>
+                        <span id="total">LKR 0.00</span>
                     </div>
                 </div>
 
@@ -99,8 +100,7 @@
                     <button class="bill-btn checkout-btn" id="checkoutBtn" onclick="checkOutModal()">
                         <i class="fas fa-credit-card"></i> Checkout
                     </button>
-                    <button class="bill-btn clear-btn" id="clearBtn"
-                        onclick="clearBill()">
+                    <button class="bill-btn clear-btn" id="clearBtn" onclick="clearBill()">
                         <i class="fas fa-trash-alt"></i> Clear Bill
                     </button>
                 </div>
@@ -109,37 +109,37 @@
     </aside>
 
     <div id="checkoutModal" class="checkoutOverlay">
-        <div>
+        <div class="checkoutModalBox">
             <h3 style="text-align: center;">Confirm Your Order</h3>
+
             <span>Customer Name</span><br>
             <input type="text" id="customerName" placeholder="Enter your name"><br><br>
+
             <span>Telephone</span><br>
             <input type="text" id="customerTelephone" placeholder="Enter your number"><br><br>
-        </div>
-        <div class="confirm-lbls">
-            <div>
-                <span>Subtotal:</span>
-                <span id="modalSubtotal">$0.00</span>
+
+            <div class="confirm-lbls">
+                <div>
+                    <span>Subtotal:</span>
+                    <span id="modalSubtotal">0.00</span>
+                </div>
+                <div>
+                    <span>Tax (8%):</span>
+                    <span id="modalTax">0.00</span>
+                </div>
+                <div>
+                    <strong>Total:</strong>
+                    <strong id="modalTotal">0.00</strong>
+                </div>
             </div>
-            <div>
-                <span>Tax (8%):</span>
-                <span id="modalTax">$0.00</span>
+
+            <div class="pop-window-btns">
+                <button id="btnCancel" class="confirm-btn" onclick="closeCheckout()">Cancel</button>
+                <button id="btnConfirm" class="confirm-btn" onclick="confirmOrder()">Confirm Order</button>
             </div>
-            <div>
-                <span>Total:</span>
-                <span id="modalTotal">$0.00</span>
-            </div>
-        </div>
-        <div class="pop-window-btns">
-            <button class="confirm-btn" id="cancelBtn"
-                onclick="document.getElementById('checkoutModal').style.display='none'">
-                Cancel
-            </button>
-            <button class="confirm-btn" id="confirmBtn" onclick="confirmOrder()">
-                Confirm Order
-            </button>
         </div>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="app.js"></script>

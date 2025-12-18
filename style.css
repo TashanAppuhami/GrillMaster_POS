@@ -1,28 +1,3 @@
-.food-container {
-  border: 2px solid rgb(75 70 74);
-  border-radius: 0.5em;
-  padding: 20px 10px;
-  font: 1.2em sans-serif;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-
-  overflow-x: auto;
-
-  /* Give space for bill section */
-  margin-right: 380px;
-}
-
-.food-container>* {
-  padding: 10px;
-  border: 2px solid rgb(95 97 110);
-  border-radius: 0.5em;
-  margin-left: 0;
-}
-
-/* --------------------------
-   BACKGROUND IMAGE
---------------------------- */
 .image {
   background-image: url(Assets/images/fast-food-burgers-with-fries-cola-black-chalkboard_220925-8245.jpg);
   background-size: cover;
@@ -33,6 +8,30 @@
   background-blend-mode: multiply;
   backdrop-filter: blur(5px);
   border-radius: 15px;
+}
+.welcome-section h1, .welcome-section p {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.food-container {
+  border: 2px solid rgb(75 70 74);
+  border-radius: 0.5em;
+  padding: 20px 10px;
+  font: 1.2em sans-serif;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  overflow-x: auto;
+  backdrop-filter: blur(5px);
+  /* margin-right: 380px; */
+}
+
+.food-container>* {
+  padding: 10px;
+  border: 2px solid rgb(95 97 110);
+  border-radius: 0.5em;
+  /* margin-left: 0; */
 }
 
 .fixed-button{
@@ -304,45 +303,61 @@
 
 
 .checkoutOverlay {
-  display: none;
-  position: fixed;
-  width: 500px;
-  height: 550px;
-  left: 35%;
-  top: 20%;
-  background-color: white;
-  padding: 10px 20px;
-  border-radius: 0.5em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    /* left: ; */
 }
 
-.pop-window-btns{
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+/* Modal box */
+.checkoutModalBox {
+  position: relative;
+    background: #fff;
+    padding: 25px;
+    width: 350px;
+    border-radius: 10px;
+    left: 35%;
+    top: 20%;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 }
 
-.confirm-btn{
-  background-color: #c72e2e;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-weight: 600;
-}
-.confirm-btn:hover{
-  background-color: #b02525;
-}
-.confirm-btn:active{
-  background-color: #601717;
+/* Inputs */
+.checkoutModalBox input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
 }
 
-.confirm-lbls{
-  
-  border: 2px solid rgb(191, 191, 191);
-  padding: 5px 10px;
-  font-weight: 600;
-  
-  
+/* Price labels */
+.confirm-lbls div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+}
+
+/* Buttons */
+.pop-window-btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.confirm-btn {
+    padding: 8px 14px;
+    cursor: pointer;
+    color: white;
+    background-color: #00c62e;
+    border: none;
+    border-radius: 5px;
+}
+.confirm-btn:hover {
+    background-color: #218838;
+}
+.confirm-btn:active {
+    background-color: #44a95b;
 }
